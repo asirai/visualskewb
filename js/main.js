@@ -11,11 +11,12 @@ window.addEventListener('load', () => {
   const num2color = [white,green,red,yellow,blue,orange]
 
   const generateImg = () => {
-    const alg = document.getElementById('alg').value
+    const alg = document.getElementById('alg').value.split(' ')
     const size = document.getElementById('size').value
 
     let sk = new Skewb()
     for (let i = 0; i < alg.length; ++i) {
+      if (!Object.keys(moves).includes(alg[i])) continue
       sk = sk.apply(moves[alg[i]])
     }
   
