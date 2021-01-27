@@ -11,13 +11,27 @@ window.addEventListener('load', () => {
   const num2color = [white,green,red,yellow,blue,orange]
 
   const generateImg = () => {
-    const alg = document.getElementById('alg').value.split(' ')
+    let alg = document.getElementById('alg').value.replace(/\s+/g, '') // スペースを削除
     const size = document.getElementById('size').value
 
+    const moveKeys = Object.keys(moves).sort((a, b) => b.length - a.length)
+
     let sk = new Skewb()
-    for (let i = 0; i < alg.length; ++i) {
-      if (!Object.keys(moves).includes(alg[i])) continue
-      sk = sk.apply(moves[alg[i]])
+    const algArray = []
+    while (alg.length > 0) {
+      for (let i = 0; i < moveKeys.length; ++i) {
+        const key = moveKeys[i]
+        if (alg.startsWith(key)) {
+          algArray.push(key)
+          alg = alg.slice(key.length)
+          break
+        }
+      }
+    }
+    
+    for (let i = 0; i < algArray.length; ++i) {
+      if (!Object.keys(moves).includes(algArray[i])) continue
+      sk = sk.apply(moves[algArray[i]])
     }
   
     const stNum = sk.getSticker()
