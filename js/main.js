@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
   const num2color = [white,green,red,yellow,blue,orange]
 
   const generateImg = () => {
-    let alg = document.getElementById('alg').value.replace(/\s+/g, '') // スペースを削除
+    let alg = document.getElementById('alg').value.replace(/\s+/g, '')
     const size = document.getElementById('size').value
 
     const moveKeys = Object.keys(moves).sort((a, b) => b.length - a.length)
@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
           alg = alg.slice(key.length)
           break
         }
+        if (i == moveKeys.length - 1) return
       }
     }
     

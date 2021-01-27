@@ -6,7 +6,7 @@ const drawSkewb = (size, ca, ctx, sticker) => {
 
   ca.width = size
   ca.height = size
-  ctx.lineWidth = w / 100
+  ctx.lineWidth = w / 50
 
   const drawPolygon = (border, color, n, ...coord) => {
     ctx.beginPath()
